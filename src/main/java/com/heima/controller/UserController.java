@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,7 +19,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/user")  //抽取路徑前墜
-@Tag(name = "user使用者相關")
+@Tag(name = "1.User使用者")
 public class UserController {
 
     @Autowired
@@ -29,7 +30,7 @@ public class UserController {
      * @param user
      * @return
      */
-    @Operation(summary = "創建用戶", description = "帳號，密碼規則皆是:英文小寫+數字需大於等於8個字節，不出過15字節")
+    @Operation(summary = "創建用戶", description = "帳號:e-mail,密碼:數字需大於等於8個字節，不出過15字節")
     @Schema()
     @PostMapping("/add")
     @ApiResponses(value = {
@@ -68,6 +69,7 @@ public class UserController {
         return Result.success("刪除成功");
     }
 
+    @Transactional
     @Operation(summary = "修改用戶", description = "給管理員修改帳號or使用者更換大頭貼使用")
     @PutMapping("/update")
 
@@ -76,18 +78,21 @@ public class UserController {
             @Parameter(description = "帳號", example = "abcd5678" )@RequestParam(required = false) String account,
             @Parameter(description = "密碼", example = "12345678")@RequestParam(required = false) String passWord,
             @Parameter(description = "使用者稱謂", example = "九面")@RequestParam(required = false) String userName,
+            @Parameter(description = "手機號碼", example = "0912345678")@RequestParam(required = false) String phone,
             @Parameter(description = "圖片", example = "1")@RequestParam(required = false) String image,
             @Parameter(description = "用戶等級", example = "1")@RequestParam(required = false) Integer level)
 
     {
         log.info("修改用戶");
         User user = new User();
-        user.setId(id);
+        user.setUserID(id);
         user.setAccount(account);
         user.setPassWord(passWord);
         user.setUserName(userName);
+        user.setPhone(phone);
         user.setImage(image);
         user.setLevel(level);
+        log.info("修改數據 : {}",user);
         Result result = userService.userUpdate(user);
 
         return result;

@@ -1,6 +1,7 @@
 package com.heima;
 
 import com.heima.pojo.backup.PayBase;
+import jakarta.xml.bind.SchemaOutputResolver;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
@@ -14,6 +15,7 @@ import org.springframework.context.ApplicationContext;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
+import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
@@ -55,13 +57,12 @@ public class testBean {
 
     @Test
     public void testBean() throws JSONException {
-        JSONObject jsonObject = new JSONObject();
+        String s = "redirect_url=http://pay.btest4wohjelay.com:5222/pay/api/callback/SEVENTYPAY/17001&\n";
 
-        String o = "";
-        if(jsonObject.has("gg"))
-        o = jsonObject.get("gg").toString();
 
-        System.out.println(o.toString() + "----------");
+        String encode = URLEncoder.encode(s);
+
+        System.out.println("encode: " + encode);
     }
 
     /**

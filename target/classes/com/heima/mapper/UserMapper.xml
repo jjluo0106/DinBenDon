@@ -7,45 +7,50 @@
 
 <!--    新增-->
     <insert id="userInsert">
-        insert into db1.user(id, account, passWord, userName, image, level, createTime, updateTime)
+        insert into db1.t_user(userID, account, passWord, phone, userName, image, level, createTime, updateTime)
         values (
-        null, #{account}, #{passWord}, #{userName}, #{image}, #{level}, NOW(), NOW()
+        null, #{account}, #{passWord}, #{phone}, #{userName}, #{image}, #{level}, NOW(), NOW()
         )
     </insert>
 
     <!--    刪除-->
-    <delete id="userDelete">
+    <delete id ="userDelete">
         <if test="ids != null and ids != ''">
-            delete from user where id in
-            <foreach collection="ids" item="id" separator="," open="(" close=")">
-                #{id}
+            delete from t_user where userID in
+            <foreach collection="ids" item="userID" separator="," open="(" close=")">
+                #{userID}
             </foreach>
         </if>
     </delete>
 
     <update id="userUpdate">
-        update user
+        update t_user
         <set>
             <if test=" account != null and account != ''">account = #{account} ,</if>
             <if test=" passWord != null and passWord != ''">passWord = #{passWord},</if>
             <if test=" userName != null and userName != ''">userName = #{userName},</if>
+            <if test=" phone != null and phone != ''">phone = #{phone},</if>
             <if test=" image != null and image != ''">image = #{image},</if>
             <if test=" level != null and level != ''">level = #{level},</if>
 
             updateTime = NOW()
         </set>
-        where id = #{id};
+        where userID = #{userID};
     </update>
 
 
     <!--    查詢所有-->
     <select id="userSelectAll" resultType="com.heima.pojo.User">
-        select * from db1.user;
+        select * from db1.t_user;
     </select>
 
 
     <select id="selectByAccount" resultType="com.heima.pojo.User">
-        select * from db1.user where account = #{account};
+        select * from db1.t_user where account = #{account};
+    </select>
+
+    <select id="selectByID" resultType="com.heima.pojo.User">
+        select * from db1.t_user where userID = #{userID};
     </select>
 
 </mapper>

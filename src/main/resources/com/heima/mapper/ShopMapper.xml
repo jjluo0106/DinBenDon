@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.heima.mapper.ShopMapper">
+
+<!--    新增-->
+    <insert id="shopInsert">
+        insert into db1.t_shop(shopID, shopName, phone, address, image, lastUpdateBy, createTime, updateTime)
+        values (
+        null, #{shopName}, #{phone}, #{address}, #{image}, #{lastUpdateBy}, NOW(), NOW()
+        )
+    </insert>
+
+    <!--    刪除-->
+    <delete id ="shopDelete">
+        <if test="ids != null and ids != ''">
+            delete from t_shop where shopID in
+            <foreach collection="ids" item="shopID" separator="," open="(" close=")">
+                #{shopID}
+            </foreach>
+        </if>
+    </delete>
+
+    <update id="shopUpdate">
+        update t_shop
+        <set>
+            <if test=" shopName != null and shopName != ''">shopName = #{shopName} ,</if>
+            <if test=" phone != null and phone != ''">phone = #{phone},</if>
+            <if test=" address != null and address != ''">address = #{address},</if>
+            <if test=" image != null and image != ''">image = #{image},</if>
+            <if test=" lastUpdateBy != null and lastUpdateBy != ''">lastUpdateBy = #{lastUpdateBy},</if>
+
+            updateTime = NOW()
+        </set>
+        where shopID = #{shopID};
+    </update>
+
+    <!--    查詢所有-->
+    <select id="shopSelectAll" resultType="com.heima.pojo.Shop">
+        select * from db1.t_shop;
+    </select>
+
+
+    <select id="selectByShopName" resultType="com.heima.pojo.Shop">
+        select * from db1.t_shop where shopName = #{shopName};
+    </select>
+
+    <select id="selectByID" resultType="com.heima.pojo.Shop">
+        select * from db1.t_shop where shopID = #{shopID};
+    </select>
+
+</mapper>

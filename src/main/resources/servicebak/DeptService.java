@@ -1,7 +1,7 @@
 package servicebak;
 
-import com.heima.mapper.DeptMapper;
-import com.heima.mapper.EmpMapper;
+import com.heima.mapper.bak.DeptMapper;
+import com.heima.mapper.bak.EmpMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

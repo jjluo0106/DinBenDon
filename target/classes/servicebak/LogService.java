@@ -1,6 +1,6 @@
 package servicebak;
 
-import com.heima.mapper.LogMapper;
+import com.heima.mapper.bak.LogMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;

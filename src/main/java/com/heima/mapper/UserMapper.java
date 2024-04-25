@@ -11,9 +11,11 @@ public interface UserMapper {
 
     int userDelete(List<Integer> ids);
 
-    void userUpdate(User user);
+    int userUpdate(User user);
 
     List<User> userSelectAll();
 
     User selectByAccount(String account);
+
+    User selectByID(Integer userID);
 }
