@@ -4,10 +4,7 @@ import com.heima.pojo.Shop;
 import com.heima.service.ShopService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +27,7 @@ public class ShopController {
      * @param shop
      * @return
      */
-    @Operation(summary = "新增店家資訊", description = "帳號:e-mail/密碼規則皆是:英文小寫+數字需大於等於8個字節，不出過15字節")
+    @Operation(summary = "新增-店家資訊", description = "帳號:e-mail/密碼規則皆是:英文小寫+數字需大於等於8個字節，不出過15字節")
     @Schema()
     @PostMapping("/add")
 
@@ -40,7 +37,7 @@ public class ShopController {
         return r;
     }
 
-    @Operation(summary = "刪除店家")
+    @Operation(summary = "刪除-依照主鍵ID[s]-店家")
     @DeleteMapping("/delete/{ids}")
     public Result shopDeleteById(@PathVariable List<Integer> ids){
         log.info("刪除店家");
@@ -54,7 +51,7 @@ public class ShopController {
     }
 
     @Transactional
-    @Operation(summary = "依照ID修改店家", description = "給管理員修改帳號or使用者更換大頭貼使用")
+    @Operation(summary = "修改-依照主鍵ID-店家", description = "給管理員修改帳號or使用者更換大頭貼使用")
     @PutMapping("/updateByID")
 
     public Result shopUpdate(@RequestBody Shop shop)
@@ -67,7 +64,7 @@ public class ShopController {
         return result;
     }
 
-    @Operation(summary = "查詢所有店家", description = "無須請求參數")
+    @Operation(summary = "查詢-所有-店家", description = "無須請求參數")
     @GetMapping("/selectAll")
     public Result shopSelectAll(){
         log.info("查詢所有店家");
@@ -75,7 +72,7 @@ public class ShopController {
         return Result.success(shop);
     }
 
-    @Operation(summary = "依照名稱參數查詢店家", parameters = {
+    @Operation(summary = "查詢-依照主鍵ID-店家", parameters = {
             @Parameter(name = "account", description = "使用者帳號", example = "jay0609@gmail.com")
     })
     @GetMapping("/selectByShopName/{shopName}")

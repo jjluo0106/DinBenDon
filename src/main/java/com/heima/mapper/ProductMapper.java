@@ -18,4 +18,6 @@ public interface ProductMapper {
     List<Product> selectByProductName(String account);
 
     Product selectByID(Integer productID);
+
+    List<Product> selectByShopID(Integer shopID);
 }

@@ -23,14 +23,31 @@ public class UserService {
     // 新
 
     public Result UserInsert(User user) {
-        Result validate = user.validate();
-        if ("1".equals(validate.getData())) {
-            userMapper.userInsert(user);
-            return Result.success("創建成功");
-        } else {
-            return validate;
+
+        String account = user.getAccount();
+        String passWord = user.getPassWord();
+
+        String regexForEmail = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+        String regexForPassword = "^.{8,15}$";
+
+        log.info("account :" + account);
+        log.info("passWord :" + passWord);
+        if(!account.matches(regexForEmail)){
+            return Result.fail("帳號不合法: 非e-mail格式","");
+        }
+        if(!passWord.matches(regexForPassword)){
+            return Result.fail("密碼長度需為8~15個字符","");
         }
 
+
+        User user1 = userMapper.selectByAccount(account);
+        log.info("較驗是否有重複帳號: {}",user1);
+
+        if(user1 != null){
+            return Result.fail("重複的帳號名稱","");
+        }
+        userMapper.userInsert(user);
+        return Result.success("使用者創建成功");
     }
 
     // 刪

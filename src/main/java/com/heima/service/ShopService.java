@@ -1,7 +1,6 @@
 package com.heima.service;
 
 import com.heima.mapper.ShopMapper;
-import com.heima.mapper.ShopMapper;
 import com.heima.pojo.Result;
 import com.heima.pojo.Shop;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +23,7 @@ public class ShopService {
 
     public Result shopInsert(Shop shop) {
 
-            shopMapper.shopInsert(shop);
+            shopMapper.insert(shop);
             return Result.success("創建成功");
 
     }
@@ -32,14 +31,14 @@ public class ShopService {
     // 刪
 
     public int shopDelete(List<Integer> ids) {
-        return shopMapper.shopDelete(ids);
+        return shopMapper.delete(ids);
     }
     // 修
 
     public Result shopUpdate(Shop shop) {
 
 
-        shopMapper.shopUpdate(shop);
+        shopMapper.update(shop);
         return Result.success("修改成功");
     }
     //查
@@ -49,7 +48,7 @@ public class ShopService {
     }
 
     public List<Shop> shopSelectAll() {
-        return shopMapper.shopSelectAll();
+        return shopMapper.selectAll();
     }
 
 

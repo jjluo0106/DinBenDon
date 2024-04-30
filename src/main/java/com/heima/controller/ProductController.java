@@ -27,7 +27,7 @@ public class ProductController {
      * @param product
      * @return
      */
-    @Operation(summary = "創建店家資訊", description = "帳號，密碼規則皆是:英文小寫+數字需大於等於8個字節，不出過15字節")
+    @Operation(summary = "新增-產品資訊", description = "帳號，密碼規則皆是:英文小寫+數字需大於等於8個字節，不出過15字節")
     @Schema()
     @PostMapping("/add")
 
@@ -37,7 +37,7 @@ public class ProductController {
         return r;
     }
 
-    @Operation(summary = "刪除店家資訊")
+    @Operation(summary = "刪除-依照主鍵ID[s]-產品資訊")
     @DeleteMapping("/delete/{ids}")
     public Result productDeleteById(@PathVariable List<Integer> ids){
         log.info("刪除店家");
@@ -51,20 +51,20 @@ public class ProductController {
     }
 
     @Transactional
-    @Operation(summary = "依照ID修改店家資訊", description = "給管理員修改帳號or使用者更換大頭貼使用")
+    @Operation(summary = "修改-依照主鍵ID-產品資訊", description = "給管理員修改帳號or使用者更換大頭貼使用")
     @PutMapping("/updateByID")
 
     public Result productUpdate(@RequestBody Product product)
 
     {
-        log.info("修改店家資訊");
+        log.info("修改產品資訊");
 
         Result result = productService.update(product);
 
         return result;
     }
 
-    @Operation(summary = "查詢所有店家資訊", description = "無須請求參數")
+    @Operation(summary = "查詢-所有-產品資訊", description = "無須請求參數")
     @GetMapping("/selectAll")
     public Result productSelectAll(){
         log.info("查詢所有店家");
@@ -72,7 +72,7 @@ public class ProductController {
         return Result.success(product);
     }
 
-    @Operation(summary = "依照ProductName參數查詢店家資訊")
+    @Operation(summary = "查詢-依照主鍵ID-產品資訊")
     @GetMapping("/selectByProductName/{productName}")
     public Result selectById(@PathVariable String productName){
         log.info("依照productName: {} 查詢店家", productName);

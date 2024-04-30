@@ -4,10 +4,7 @@ import com.heima.pojo.User;
 import com.heima.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,38 +22,23 @@ public class UserController {
     @Autowired
     UserService userService;
 
+
     /**
      * 新增
      * @param user
      * @return
      */
-    @Operation(summary = "創建用戶", description = "帳號:e-mail,密碼:數字需大於等於8個字節，不出過15字節")
+    @Operation(summary = "新增-用戶", description = "帳號: e-mail账号/ 密碼 : 長度需為8~15個字符")
     @Schema()
     @PostMapping("/add")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "創建成功",
-                    content = @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = Result.class, example = "{\"status\":\"success\",\"code\":200,\"message\":\"Request successful\",\"data\":\"新增成功\"}")
-                    )
-            ),
-            @ApiResponse(responseCode = "400", description = "請求參數錯誤",
-                    content = @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = Result.class, example = "{\"status\":\"error\",\"code\":400,\"message\":\"Missing parameter: account\",\"data\":\"\"}")
-                    )
-            ),
-            @ApiResponse(responseCode = "500", description = "服務器內部錯誤",
-                    content = @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = Result.class, example = "{\"status\":\"error\",\"code\":500,\"message\":\"Internal server error\",\"data\":\"\"}")
-                    )
-            )
-    })
+
     public Result userInsert(@RequestBody User user){
         Result r = userService.UserInsert(user);
 
         return r;
     }
 
-    @Operation(summary = "刪除用戶")
+    @Operation(summary = "刪除-依照主鍵ID[s]-用戶")
     @DeleteMapping("/delete/{ids}")
     public Result userDeleteById(@PathVariable List<Integer> ids){
         log.info("刪除用戶");
@@ -70,7 +52,7 @@ public class UserController {
     }
 
     @Transactional
-    @Operation(summary = "修改用戶", description = "給管理員修改帳號or使用者更換大頭貼使用")
+    @Operation(summary = "修改-依照主鍵ID-用戶", description = "給管理員修改帳號or使用者更換大頭貼使用")
     @PutMapping("/update")
 
     public Result userUpdate(
@@ -98,7 +80,7 @@ public class UserController {
         return result;
     }
 
-    @Operation(summary = "查詢所有用戶", description = "無須請求參數")
+    @Operation(summary = "查詢-所有-用戶", description = "無須請求參數")
     @GetMapping("/selectAll")
     public Result userSelectAll(){
         log.info("查詢所有用戶");
@@ -106,7 +88,7 @@ public class UserController {
         return Result.success(user);
     }
 
-    @Operation(summary = "依照account參數查詢用戶", parameters = {
+    @Operation(summary = "查詢-依照account-用戶", parameters = {
             @Parameter(name = "account", description = "使用者帳號", example = "john_doe")
     })
     @GetMapping("/selectByAccount/{account}")

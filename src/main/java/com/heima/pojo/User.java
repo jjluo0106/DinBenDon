@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 public class User {
 
 
-    @Schema(description = "用戶ID", example = "1", required = true)
+    @Schema(description = "＜唯一ID＞: 新增-皆不填，系統將自動產生/ 修改-必填", example = "1")
     Integer userID;
 
     @Schema(description = "e-mail=帳號", example = "abc666666@gmail.com", required = true)
@@ -35,36 +35,10 @@ public class User {
     @Schema(description = "等級", example = "1", required = true)
     Integer level;
 
-
+    @Schema(description = "創建時間: 自動產生皆不用填", example = "", required = false)
     String createTime;
 
-
+    @Schema(description = "更新時間: 自動產生皆不用填", example = "", required = false)
     String updateTime;
-
-    public Result validate() {
-        //account
-        if (account == null) {
-            return Result.errorMissingParameter("account");
-        } else if (account.length() < 8) {
-            return Result.errorParameterTooShort("account", 8);
-        } else if (account.length() > 15) {
-            return Result.errorParameterTooLong("account", 15);
-        }
-        //passWord
-        else if (passWord == null) {
-            return Result.errorMissingParameter("passWord");
-        } else if (passWord.length() < 8) {
-            return Result.errorParameterTooShort("passWord", 8);
-        } else if (passWord.length() > 15) {
-            return Result.errorParameterTooLong("passWord", 15);
-        }
-        //level
-        else if (level == null) {
-            return Result.errorMissingParameter("level");
-        } else if (level != 1 && level != 2) {
-            return Result.errorWrongFormat("level");
-        }
-        return Result.success("1");
-    }
 
 }

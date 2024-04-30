@@ -1,19 +1,26 @@
 package com.heima.mapper;
+
 import com.heima.pojo.Shop;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
 
 import java.util.List;
 
 @Mapper
 public interface ShopMapper {
 
-    public void shopInsert(Shop shop);
 
-    int shopDelete(List<Integer> ids);
+    @Insert("insert into db1.t_shop(shopID, shopName, phone, address, image, lastUpdateBy, createTime, updateTime) values (null, #{shopName}, #{phone}, #{address}, #{image}, #{lastUpdateBy}, NOW(), NOW())")
+    @Options(useGeneratedKeys = true, keyProperty = "shopID")
+    int insert(Shop shop);
 
-    int shopUpdate(Shop shop);
 
-    List<Shop> shopSelectAll();
+    int delete(List<Integer> ids);
+
+    int update(Shop shop);
+
+    List<Shop> selectAll();
 
     Shop selectByShopName(String account);
 

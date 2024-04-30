@@ -6,15 +6,15 @@
 <mapper namespace="com.heima.mapper.ShopMapper">
 
 <!--    新增-->
-    <insert id="shopInsert">
-        insert into db1.t_shop(shopID, shopName, phone, address, image, lastUpdateBy, createTime, updateTime)
-        values (
-        null, #{shopName}, #{phone}, #{address}, #{image}, #{lastUpdateBy}, NOW(), NOW()
-        )
-    </insert>
+<!--    <insert id="insert">-->
+<!--        insert into db1.t_shop(shopID, shopName, phone, address, image, lastUpdateBy, createTime, updateTime)-->
+<!--        values (-->
+<!--        null, #{shopName}, #{phone}, #{address}, #{image}, #{lastUpdateBy}, NOW(), NOW()-->
+<!--        )-->
+<!--    </insert>-->
 
     <!--    刪除-->
-    <delete id ="shopDelete">
+    <delete id ="delete">
         <if test="ids != null and ids != ''">
             delete from t_shop where shopID in
             <foreach collection="ids" item="shopID" separator="," open="(" close=")">
@@ -23,7 +23,7 @@
         </if>
     </delete>
 
-    <update id="shopUpdate">
+    <update id="update">
         update t_shop
         <set>
             <if test=" shopName != null and shopName != ''">shopName = #{shopName} ,</if>
@@ -38,7 +38,7 @@
     </update>
 
     <!--    查詢所有-->
-    <select id="shopSelectAll" resultType="com.heima.pojo.Shop">
+    <select id="selectAll" resultType="com.heima.pojo.Shop">
         select * from db1.t_shop;
     </select>
 

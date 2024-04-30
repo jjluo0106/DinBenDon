@@ -54,4 +54,8 @@
         select * from db1.t_product where productID = #{productID};
     </select>
 
+    <select id="selectByShopID" resultType="com.heima.pojo.Product">
+        select * from db1.t_product where shopID = #{shopID};
+    </select>
+
 </mapper>

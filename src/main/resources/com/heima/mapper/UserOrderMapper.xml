@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.heima.mapper.UserOrderMapper">
+
+    <!--    新增-->
+    <insert id="insert">
+        insert into db1.t_userOrder(userID,   menuID,   productID,   addIDs,lastUpdateBy, createTime, updateTime)
+        values (
+                             #{userID},#{menuID},#{productID},#{addIDs},#{lastUpdateBy}, NOW(), NOW()
+        )
+    </insert>
+
+
+    <!--    刪除-->
+    <delete id="delete">
+        <if test="ids != null and ids != ''">
+            delete from t_userOrder where userOrderID in
+            <foreach collection="ids" item="userOrderID" separator="," open="(" close=")">
+                #{userOrderID}
+            </foreach>
+        </if>
+    </delete>
+
+    <update id="update">
+        update t_userOrder
+        <set>
+            <if test=" userID != null and userID != ''">userID = #{userID} ,</if>
+            <if test=" menuID != null and menuID != ''">menuID = #{menuID},</if>
+            <if test=" productID != null and productID != ''">productID = #{productID},</if>
+            <if test=" addIDs != null and addIDs != ''">addIDs = #{addIDs},</if>
+            <if test=" lastUpdateBy != null and lastUpdateBy != ''">lastUpdateBy = #{lastUpdateBy},</if>
+
+            updateTime = NOW()
+        </set>
+        where userOrderID = #{userOrderID};
+    </update>
+
+    <!--    查詢所有-->
+    <select id="selectAll" resultType="com.heima.pojo.UserOrder">
+        select * from db1.t_userOrder;
+    </select>
+
+    <select id="selectByID" resultType="com.heima.pojo.UserOrder">
+        select * from db1.t_userOrder where userOrderID = #{userOrderID};
+    </select>
+
+</mapper>

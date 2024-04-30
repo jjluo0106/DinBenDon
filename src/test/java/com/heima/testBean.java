@@ -1,5 +1,7 @@
 package com.heima;
 
+import com.heima.mapper.AddMapper;
+import com.heima.pojo.Add;
 import com.heima.pojo.backup.PayBase;
 import jakarta.xml.bind.SchemaOutputResolver;
 import org.dom4j.Document;
@@ -102,5 +104,19 @@ public class testBean {
         } catch (NoSuchAlgorithmException e) {
             return "";
         }
+    }
+
+    @Autowired
+    AddMapper addMapper;
+    @Test
+    public void asdf(){
+        Add add = new Add();
+        add.setLastUpdateBy(9);
+
+        int addID = addMapper.insert(add);
+
+        System.out.println("addID : " + add.getAddID());
+
+
     }
 }

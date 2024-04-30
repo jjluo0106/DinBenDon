@@ -13,10 +13,11 @@ import java.util.List;
 @AllArgsConstructor
 public class Product {
 
-//    @Schema(description = "唯一ID", example = "1", required = true)
+    //    @Schema(description = "唯一ID", example = "1", required = true)
+    @Schema(description = "＜唯一ID＞: 新增-皆不填，系統將自動產生/ 修改-必填", example = "1")
     Integer productID;
 
-    @Schema(description = "關聯-店家ID", example = "1", required = true)
+    @Schema(description = "關聯-店家ID＜使用管理員專用接口: 主鍵未知不用填，統一交由後端處理＞", example = "1", required = true)
     Integer shopID;
 
     @Schema(description = "關聯-添加&備註", example = "1,2,3", required = true)
@@ -38,7 +39,9 @@ public class Product {
     @Schema(description = "最後修改人ID", example = "1", required = true)
     Integer lastUpdateBy;
 
+    @Schema(description = "創建時間: 自動產生皆不用填", example = "", required = false)
     String createTime;
 
+    @Schema(description = "更新時間: 自動產生皆不用填", example = "", required = false)
     String updateTime;
 }

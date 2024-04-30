@@ -6,26 +6,26 @@
 <mapper namespace="com.heima.mapper.AddMapper">
 
     <!--    新增-->
-    <insert id="insert">
-        insert into db1.t_product(shopID, addIDs, productName, price, productType, image, createTime, updateTime)
-        values (
-        #{shopID}, #{addIDs}, #{productName}, #{price}, #{productType}, #{lastUpdateBy}, #{image}, NOW(), NOW()
-        )
-    </insert>
+<!--    <insert id="insert">-->
+<!--        insert into db1.t_add(description, price, image, lastUpdateBy, createTime, updateTime)-->
+<!--        values (-->
+<!--        #{description}, #{price}, #{image}, #{lastUpdateBy}, NOW(), NOW()-->
+<!--        )-->
+<!--    </insert>-->
 
 
     <!--    刪除-->
     <delete id="delete">
         <if test="ids != null and ids != ''">
-            delete from t_product where productID in
-            <foreach collection="ids" item="productID" separator="," open="(" close=")">
-                #{productID}
+            delete from t_add where addID in
+            <foreach collection="ids" item="addID" separator="," open="(" close=")">
+                #{addID}
             </foreach>
         </if>
     </delete>
 
     <update id="update">
-        update t_product
+        update t_add
         <set>
             <if test=" shopID != null and shopID != ''">shopID = #{shopID} ,</if>
             <if test=" addIDs != null and addIDs != ''">addIDs = #{addIDs},</if>
@@ -37,21 +37,21 @@
 
             updateTime = NOW()
         </set>
-        where productID = #{productID};
+        where addID = #{addID};
     </update>
 
     <!--    查詢所有-->
-    <select id="selectAll" resultType="com.heima.pojo.Product">
-        select * from db1.t_product;
+    <select id="selectAll" resultType="com.heima.pojo.Add">
+        select * from db1.t_add;
     </select>
 
 
-    <select id="selectByProductName" resultType="com.heima.pojo.Product">
-        select * from db1.t_product where productName = #{productName};
+    <select id="selectByAddName" resultType="com.heima.pojo.Add">
+        select * from db1.t_add where productName = #{productName};
     </select>
 
-    <select id="selectByID" resultType="com.heima.pojo.Product">
-        select * from db1.t_product where productID = #{productID};
+    <select id="selectByID" resultType="com.heima.pojo.Add">
+        select * from db1.t_add where addID = #{addID};
     </select>
 
 </mapper>
