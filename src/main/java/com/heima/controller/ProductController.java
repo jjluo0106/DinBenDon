@@ -27,7 +27,7 @@ public class ProductController {
      * @param product
      * @return
      */
-    @Operation(summary = "新增-添加&備註資訊")
+    @Operation(summary = "新增-產品資訊")
     @Schema()
     @PostMapping("/product")
 
@@ -35,26 +35,32 @@ public class ProductController {
         return productService.insert(product);
     }
 
-    @Operation(summary = "刪除-依照主鍵ID[s]-添加&備註資訊")
+    @Operation(summary = "刪除-依照主鍵ID[s]-產品資訊")
     @DeleteMapping("/delete/{ids}")
     public Result productDeleteById(@PathVariable List<Integer> ids){
         return productService.delete(ids);
     }
 
     @Transactional
-    @Operation(summary = "修改-依照主鍵ID-添加&備註資訊")
+    @Operation(summary = "修改-依照主鍵ID-產品資訊")
     @PutMapping("/updateByID")
     public Result productUpdate(@RequestBody Product product){
         return productService.update(product);
     }
 
-    @Operation(summary = "查詢-所有-添加&備註資訊", description = "無須請求參數")
+    @Operation(summary = "修改-依照category-產品資訊")
+    @PutMapping("/updateByID")
+    public Result productUpdate(@RequestBody Product product){
+        return productService.update(product);
+    }
+
+    @Operation(summary = "查詢-所有-產品資訊", description = "無須請求參數")
     @GetMapping("/selectAll")
     public Result productSelectAll(){
         return productService.selectAll();
     }
 
-    @Operation(summary = "查詢-依照主鍵ID-添加&備註資訊")
+    @Operation(summary = "查詢-依照主鍵ID-產品資訊")
     @GetMapping("/selectById/{productID}")
     public Result selectById(@PathVariable Integer productID){
         return productService.selectByID(productID);

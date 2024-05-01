@@ -9,9 +9,9 @@ import java.util.List;
 @Mapper
 public interface ProductMapper {
 
-    @Insert("        insert into db1.t_product(shopID, addIDs, productName, price, productType, image, lastUpdateBy, createTime, updateTime)\n" +
+    @Insert("        insert into db1.t_product(shopID, addIDs, productName, price, productType, category, image, lastUpdateBy, createTime, updateTime)\n" +
             "        values (\n" +
-            "        #{shopID}, #{addIDs}, #{productName}, #{price}, #{productType}, #{image}, #{lastUpdateBy}, NOW(), NOW()\n" +
+            "        #{shopID}, #{addIDs}, #{productName}, #{price}, #{productType}, #{category}, #{image}, #{lastUpdateBy}, NOW(), NOW()\n" +
             "        )")
     @Options(useGeneratedKeys = true, keyProperty = "productID", keyColumn = "productID")
     public void insert(Product product);

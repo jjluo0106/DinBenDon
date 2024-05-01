@@ -32,6 +32,7 @@
             <if test=" productName != null and productName != ''">productName = #{productName},</if>
             <if test=" price != null and price != ''">price = #{price},</if>
             <if test=" productType != null and productType != ''">productType = #{productType},</if>
+            <if test=" category != null and category != ''">category = #{category},</if>
             <if test=" image != null and image != ''">image = #{image},</if>
             <if test=" lastUpdateBy != null and lastUpdateBy != ''">lastUpdateBy = #{lastUpdateBy},</if>
 

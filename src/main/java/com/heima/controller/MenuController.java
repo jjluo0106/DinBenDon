@@ -27,7 +27,7 @@ public class MenuController {
      * @param menu
      * @return
      */
-    @Operation(summary = "新增-添加&備註資訊")
+    @Operation(summary = "新增-發起菜單")
     @Schema()
     @PostMapping("/menu")
 
@@ -35,26 +35,26 @@ public class MenuController {
         return menuService.insert(menu);
     }
 
-    @Operation(summary = "刪除-依照主鍵ID[s]-添加&備註資訊")
+    @Operation(summary = "刪除-依照主鍵ID[s]-發起菜單")
     @DeleteMapping("/delete/{ids}")
     public Result menuDeleteById(@PathVariable List<Integer> ids){
         return menuService.delete(ids);
     }
 
     @Transactional
-    @Operation(summary = "修改-依照主鍵ID-添加&備註資訊")
+    @Operation(summary = "修改-依照主鍵ID-發起菜單")
     @PutMapping("/updateByID")
     public Result menuUpdate(@RequestBody Menu menu){
         return menuService.update(menu);
     }
 
-    @Operation(summary = "查詢-所有-添加&備註資訊", description = "無須請求參數")
+    @Operation(summary = "查詢-所有-發起菜單", description = "無須請求參數")
     @GetMapping("/selectAll")
     public Result menuSelectAll(){
         return menuService.selectAll();
     }
 
-    @Operation(summary = "查詢-依照主鍵ID-添加&備註資訊")
+    @Operation(summary = "查詢-依照主鍵ID-發起菜單")
     @GetMapping("/selectById/{menuID}")
     public Result selectById(@PathVariable Integer menuID){
         return menuService.selectByID(menuID);

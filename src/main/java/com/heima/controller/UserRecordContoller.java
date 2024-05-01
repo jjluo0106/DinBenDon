@@ -52,7 +52,7 @@ public class UserRecordContoller {
     }
 
     @Transactional
-    @Operation(summary = "修改-依照主鍵ID-用戶已完成訂單", description = "給管理員修改帳號or使用者更換大頭貼使用")
+    @Operation(summary = "修改-依照主鍵ID-用戶已完成訂單")
     @PutMapping("/updateByID")
 
     public Result userRecordUpdate(@RequestBody UserRecord userRecord)
@@ -65,7 +65,7 @@ public class UserRecordContoller {
         return result;
     }
 
-    @Operation(summary = "查詢-所有-用戶已完成訂單", description = "無須請求參數")
+    @Operation(summary = "查詢-所有-用戶已完成訂單")
     @GetMapping("/selectAll")
     public Result userRecordSelectAll(){
         log.info("查詢所有[用戶已完成訂單]");

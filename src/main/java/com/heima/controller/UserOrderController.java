@@ -52,7 +52,7 @@ public class UserOrderController {
     }
 
     @Transactional
-    @Operation(summary = "修改-依照主鍵ID-用戶下定訂單", description = "給管理員修改帳號or使用者更換大頭貼使用")
+    @Operation(summary = "修改-依照主鍵ID-用戶下定訂單")
     @PutMapping("/updateByID")
 
     public Result userOrderUpdate(@RequestBody UserOrder userOrder)
@@ -65,7 +65,7 @@ public class UserOrderController {
         return result;
     }
 
-    @Operation(summary = "查詢-所有-用戶下定訂單", description = "無須請求參數")
+    @Operation(summary = "查詢-所有-用戶下定訂單")
     @GetMapping("/selectAll")
     public Result userOrderSelectAll(){
         log.info("查詢所有[用戶下定訂單]");
