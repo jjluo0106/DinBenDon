@@ -42,13 +42,7 @@ public class UserController {
     @DeleteMapping("/delete/{ids}")
     public Result userDeleteById(@PathVariable List<Integer> ids){
         log.info("刪除用戶");
-        int i = userService.userDelete(ids);
-        if(i>0){
-            log.info("刪除成功，刪除了: {}", i);
-        }else {
-            log.info("刪除失敗");
-        }
-        return Result.success("刪除成功");
+        return userService.delete(ids);
     }
 
     @Transactional
@@ -75,17 +69,16 @@ public class UserController {
         user.setImage(image);
         user.setLevel(level);
         log.info("修改數據 : {}",user);
-        Result result = userService.userUpdate(user);
+        return userService.userUpdate(user);
 
-        return result;
+
     }
 
     @Operation(summary = "查詢-所有-用戶", description = "無須請求參數")
     @GetMapping("/selectAll")
     public Result userSelectAll(){
         log.info("查詢所有用戶");
-        List<User> user = userService.userSelectAll();
-        return Result.success(user);
+        return userService.userSelectAll();
     }
 
     @Operation(summary = "查詢-依照account-用戶", parameters = {
@@ -94,7 +87,6 @@ public class UserController {
     @GetMapping("/selectByAccount/{account}")
     public Result selectById(@PathVariable String account){
         log.info("依照account: {} 查詢用戶", account);
-        User user = userService.selectByAccount(account);
-        return Result.success(user);
+        return userService.selectByAccount(account);
     }
 }

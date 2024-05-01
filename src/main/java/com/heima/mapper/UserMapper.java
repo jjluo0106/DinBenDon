@@ -1,19 +1,26 @@
 package com.heima.mapper;
 import com.heima.pojo.User;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
 
 import java.util.List;
 
 @Mapper
 public interface UserMapper {
 
-    public void userInsert(User user);
+    @Insert("insert into db1.t_user(userID, account, passWord, phone, userName, image, level, createTime, updateTime)\n" +
+            "        values (\n" +
+            "        null, #{account}, #{passWord}, #{phone}, #{userName}, #{image}, #{level}, NOW(), NOW()\n" +
+            "        )")
+    @Options(useGeneratedKeys = true, keyProperty = "userID", keyColumn = "userID")
+    public void insert(User user);
 
-    int userDelete(List<Integer> ids);
+    int delete(List<Integer> ids);
 
-    int userUpdate(User user);
+    int update(User user);
 
-    List<User> userSelectAll();
+    List<User> selectAll();
 
     User selectByAccount(String account);
 

@@ -6,12 +6,12 @@
 <mapper namespace="com.heima.mapper.ProductMapper">
 
     <!--    新增-->
-    <insert id="insert">
-        insert into db1.t_product(shopID, addIDs, productName, price, productType, image, lastUpdateBy, createTime, updateTime)
-        values (
-        #{shopID}, #{addIDs}, #{productName}, #{price}, #{productType}, #{image}, #{lastUpdateBy}, NOW(), NOW()
-        )
-    </insert>
+<!--    <insert id="insert">-->
+<!--        insert into db1.t_product(shopID, addIDs, productName, price, productType, image, lastUpdateBy, createTime, updateTime)-->
+<!--        values (-->
+<!--        #{shopID}, #{addIDs}, #{productName}, #{price}, #{productType}, #{image}, #{lastUpdateBy}, NOW(), NOW()-->
+<!--        )-->
+<!--    </insert>-->
 
 
     <!--    刪除-->

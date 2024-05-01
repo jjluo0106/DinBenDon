@@ -2,6 +2,7 @@ package com.heima.service;
 
 import com.heima.mapper.*;
 import com.heima.pojo.*;
+import com.heima.util.MyUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,6 +36,8 @@ public class AdminService {
         Integer lastUpdateBy = object2To4.getShop().getLastUpdateBy(); //*
         // Shop
         shopMapper.insert(object2To4.getShop());
+        object2To4.getShop().setCreateTime(MyUtils.getNow());
+        object2To4.getShop().setUpdateTime(MyUtils.getNow());
         log.info("獲取ShopID : {}", object2To4.getShop().getShopID());
         Integer shopID = object2To4.getShop().getShopID(); //*
 
@@ -72,6 +75,7 @@ public class AdminService {
                 for (int i1 = 0; i1 < tempDesSplit.length; i1++) {
                     log.info("{} 跟 {} 比較", tempDesSplit[i1], description);
                     if (tempDesSplit[i1].equals(description)) {
+                        log.info("添加id : {}", id);
                         list.add(Integer.parseInt(id));
                     }
                 }
@@ -82,17 +86,19 @@ public class AdminService {
             log.info("addIDs :{}", addIDs);
             product.setAddIDs(addIDs);
 
+            log.info("product : {}",product);
+
             productMapper.insert(product);
         }
 
 
-        return Result.success("快速創建菜單成功！！", "");
+        return Result.success("shop-products-adds 新增，data: 創建對象參數", object2To4);
     }
 
     /**
      * 查詢 Object2to4
      */
-    public Object2to4 select234ByShopID(Integer shopID) {
+    public Result select234ByShopID(Integer shopID) {
 
         Object2to4 object2to4 = new Object2to4();
 
@@ -124,7 +130,6 @@ public class AdminService {
         }
         object2to4.setAdds(addList);
 
-
-        return object2to4;
+        return Result.success("shop-products-adds 查詢，data: 查詢對象參數", object2to4);
     }
 }

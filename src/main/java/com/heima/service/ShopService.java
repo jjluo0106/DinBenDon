@@ -1,8 +1,9 @@
 package com.heima.service;
 
 import com.heima.mapper.ShopMapper;
-import com.heima.pojo.Result;
 import com.heima.pojo.Shop;
+import com.heima.pojo.Result;
+import com.heima.util.MyUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,52 +17,33 @@ public class ShopService {
     @Autowired
     ShopMapper shopMapper;
 
-
-
-
     // 新
-
-    public Result shopInsert(Shop shop) {
-
-            shopMapper.insert(shop);
-            return Result.success("創建成功");
-
+    public Result insert(Shop shop) {
+        shopMapper.insert(shop);
+        shop.setCreateTime(MyUtils.getNow());
+        shop.setUpdateTime(MyUtils.getNow());
+        return Result.success("shop 新增，data: [shop創建後對象參數]", shop);
     }
-
     // 刪
-
-    public int shopDelete(List<Integer> ids) {
-        return shopMapper.delete(ids);
+    public Result delete(List<Integer> ids) {
+        int i = shopMapper.delete(ids);
+        if(i>0){
+            return Result.success("shop 刪除，data: [刪除數量]", i);
+        }else {
+            return Result.success("無匹配id",i);
+        }
     }
     // 修
-
-    public Result shopUpdate(Shop shop) {
-
-
+    public Result update(Shop shop) {
         shopMapper.update(shop);
-        return Result.success("修改成功");
+        return Result.success("shop 依據[id]修改，data: [shop修改後對象參數]", shopMapper.selectByID(shop.getShopID()));
     }
     //查
-
-    public Shop selectByShopName(String account) {
-        return shopMapper.selectByShopName(account);
+    public Result selectByID(Integer id) {
+        return Result.success("shop 依據[id]查詢，data: [shop查詢對象參數]", shopMapper.selectByID(id));
     }
-
-    public List<Shop> shopSelectAll() {
-        return shopMapper.selectAll();
-    }
-
-
-    private boolean isPassWordLegal(String passWord) {
-        int passWordMin = 8;
-        int passWordMax = 15;
-        String passWordIllegalMessage = "密碼格式錯誤！";
-
-
-        if (passWord.length() < passWordMin || passWord.length() > passWordMax) {
-            log.info(passWordIllegalMessage);
-            return false;
-        }
-        return true;
+    //查所有
+    public Result selectAll() {
+        return Result.success("shop 所有查詢，data: [shop所有查詢對象參數]", shopMapper.selectAll());
     }
 }

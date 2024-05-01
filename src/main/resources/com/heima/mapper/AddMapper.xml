@@ -27,11 +27,8 @@
     <update id="update">
         update t_add
         <set>
-            <if test=" shopID != null and shopID != ''">shopID = #{shopID} ,</if>
-            <if test=" addIDs != null and addIDs != ''">addIDs = #{addIDs},</if>
-            <if test=" productName != null and productName != ''">productName = #{productName},</if>
+            <if test=" description != null and description != ''">description = #{description} ,</if>
             <if test=" price != null and price != ''">price = #{price},</if>
-            <if test=" productType != null and productType != ''">productType = #{productType},</if>
             <if test=" image != null and image != ''">image = #{image},</if>
             <if test=" lastUpdateBy != null and lastUpdateBy != ''">lastUpdateBy = #{lastUpdateBy},</if>
 

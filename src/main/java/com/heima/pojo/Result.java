@@ -11,6 +11,8 @@ import lombok.extern.slf4j.Slf4j;
 @NoArgsConstructor
 @Slf4j
 public class Result {
+
+
     private String status;
     private Integer code;
     private String message;
@@ -44,7 +46,7 @@ public class Result {
 
     public static Result error(String msg) {
         log.info("錯誤響應:\nmsg:\n{}",msg);
-        return new Result("未知錯誤", 404, msg, "");
+        return new Result("error", 404, msg, "");
     }
 
     public static Result errorMissingParameter(String paramName) {

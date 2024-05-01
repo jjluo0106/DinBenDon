@@ -3,6 +3,7 @@ package com.heima.service;
 import com.heima.mapper.UserRecordMapper;
 import com.heima.pojo.Result;
 import com.heima.pojo.UserRecord;
+import com.heima.util.MyUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,9 @@ public class UserRecordService {
     public Result insert(UserRecord userRecord) {
 
         userRecordMapper.insert(userRecord);
-        return Result.success("創建成功");
+        userRecord.setCreateTime(MyUtils.getNow());
+        userRecord.setUpdateTime(MyUtils.getNow());
+        return Result.success("userRecord 創建成功", userRecord);
 
     }
 

@@ -12,7 +12,7 @@ public interface ShopMapper {
 
 
     @Insert("insert into db1.t_shop(shopID, shopName, phone, address, image, lastUpdateBy, createTime, updateTime) values (null, #{shopName}, #{phone}, #{address}, #{image}, #{lastUpdateBy}, NOW(), NOW())")
-    @Options(useGeneratedKeys = true, keyProperty = "shopID")
+    @Options(useGeneratedKeys = true, keyProperty = "shopID", keyColumn = "shopID")
     int insert(Shop shop);
 
 

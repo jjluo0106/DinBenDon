@@ -6,12 +6,12 @@
 <mapper namespace="com.heima.mapper.UserRecordMapper">
 
     <!--    新增-->
-    <insert id="insert">
-        insert into db1.t_userRecord(userID, snackPrice, dinnerPrice, userActualPrice, isPaid, lastUpdateBy, createTime, updateTime)
-        values (
-                             #{userID}, #{snackPrice}, #{dinnerPrice}, #{userActualPrice}, #{isPaid}, #{lastUpdateBy}, NOW(), NOW()
-        )
-    </insert>
+<!--    <insert id="insert">-->
+<!--        insert into db1.t_userRecord(userID, snackPrice, dinnerPrice, userActualPrice, isPaid, lastUpdateBy, createTime, updateTime)-->
+<!--        values (-->
+<!--                             #{userID}, #{snackPrice}, #{dinnerPrice}, #{userActualPrice}, #{isPaid}, #{lastUpdateBy}, NOW(), NOW()-->
+<!--        )-->
+<!--    </insert>-->
 
 
     <!--    刪除-->

@@ -6,12 +6,12 @@
 <mapper namespace="com.heima.mapper.MenuMapper">
 
     <!--    新增-->
-    <insert id="insert">
-        insert into db1.t_menu(menuName,   productIDs,   coda,   startTime,   endTime,lastUpdateBy, createTime, updateTime)
-        values (
-                             #{menuName},#{productIDs},#{coda},#{startTime},#{endTime},#{lastUpdateBy}, NOW(), NOW()
-        )
-    </insert>
+<!--    <insert id="insert">-->
+<!--        insert into db1.t_menu(menuName,   productIDs,   coda,   startTime,   endTime,lastUpdateBy, createTime, updateTime)-->
+<!--        values (-->
+<!--                             #{menuName},#{productIDs},#{coda},#{startTime},#{endTime},#{lastUpdateBy}, NOW(), NOW()-->
+<!--        )-->
+<!--    </insert>-->
 
 
     <!--    刪除-->

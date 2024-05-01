@@ -27,56 +27,36 @@ public class MenuController {
      * @param menu
      * @return
      */
-    @Operation(summary = "新增-菜單", description = "限時發起給用戶下訂使用的菜單")
+    @Operation(summary = "新增-添加&備註資訊")
     @Schema()
     @PostMapping("/menu")
 
     public Result menuInsert(@RequestBody Menu menu){
-        Result r = menuService.insert(menu);
-
-        return r;
+        return menuService.insert(menu);
     }
 
-    @Operation(summary = "刪除-依照主鍵ID[s]-菜單")
+    @Operation(summary = "刪除-依照主鍵ID[s]-添加&備註資訊")
     @DeleteMapping("/delete/{ids}")
     public Result menuDeleteById(@PathVariable List<Integer> ids){
-        log.info("刪除添加&備註");
-        int i = menuService.delete(ids);
-        if(i>0){
-            log.info("刪除成功，刪除了: {}", i);
-        }else {
-            log.info("刪除失敗");
-        }
-        return Result.success("刪除成功");
+        return menuService.delete(ids);
     }
 
     @Transactional
-    @Operation(summary = "修改-依照主鍵ID-菜單", description = "給管理員修改帳號or使用者更換大頭貼使用")
+    @Operation(summary = "修改-依照主鍵ID-添加&備註資訊")
     @PutMapping("/updateByID")
-
-    public Result menuUpdate(@RequestBody Menu menu)
-
-    {
-        log.info("修改菜單");
-
-        Result result = menuService.update(menu);
-
-        return result;
+    public Result menuUpdate(@RequestBody Menu menu){
+        return menuService.update(menu);
     }
 
-    @Operation(summary = "查詢-所有-菜單", description = "無須請求參數")
+    @Operation(summary = "查詢-所有-添加&備註資訊", description = "無須請求參數")
     @GetMapping("/selectAll")
     public Result menuSelectAll(){
-        log.info("查詢所有添加&備註");
-        List<Menu> menu = menuService.selectAll();
-        return Result.success(menu);
+        return menuService.selectAll();
     }
 
-    @Operation(summary = "查詢-依照主鍵ID-菜單")
-    @GetMapping("/selectByMenuID/{menuID}")
+    @Operation(summary = "查詢-依照主鍵ID-添加&備註資訊")
+    @GetMapping("/selectById/{menuID}")
     public Result selectById(@PathVariable Integer menuID){
-        log.info("依照menuName: {} 查詢添加&備註", menuID);
-        Menu menu = menuService.selectByID(menuID);
-        return Result.success(menu);
+        return menuService.selectByID(menuID);
     }
 }

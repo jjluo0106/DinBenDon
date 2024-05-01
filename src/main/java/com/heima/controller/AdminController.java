@@ -38,8 +38,7 @@ public class AdminController {
     @GetMapping("/select234ByShopID/{ShopID}")
     public Result selectById(@PathVariable Integer ShopID){
         log.info("依照addName: {} 查詢添加&備註", ShopID);
-        Object2to4 object2to4 = adminService.select234ByShopID(ShopID);
-        return Result.success("查詢2.3.4資訊", object2to4);
+        return adminService.select234ByShopID(ShopID);
     }
 
 

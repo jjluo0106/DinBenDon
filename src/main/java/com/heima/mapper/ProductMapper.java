@@ -1,12 +1,19 @@
 package com.heima.mapper;
 import com.heima.pojo.Product;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
 
 import java.util.List;
 
 @Mapper
 public interface ProductMapper {
 
+    @Insert("        insert into db1.t_product(shopID, addIDs, productName, price, productType, image, lastUpdateBy, createTime, updateTime)\n" +
+            "        values (\n" +
+            "        #{shopID}, #{addIDs}, #{productName}, #{price}, #{productType}, #{image}, #{lastUpdateBy}, NOW(), NOW()\n" +
+            "        )")
+    @Options(useGeneratedKeys = true, keyProperty = "productID", keyColumn = "productID")
     public void insert(Product product);
 
     int delete(List<Integer> ids);

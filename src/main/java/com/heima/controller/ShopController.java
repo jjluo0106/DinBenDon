@@ -1,9 +1,9 @@
 package com.heima.controller;
-import com.heima.pojo.Result;
+
 import com.heima.pojo.Shop;
+import com.heima.pojo.Result;
 import com.heima.service.ShopService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
@@ -27,58 +27,36 @@ public class ShopController {
      * @param shop
      * @return
      */
-    @Operation(summary = "新增-店家資訊", description = "帳號:e-mail/密碼規則皆是:英文小寫+數字需大於等於8個字節，不出過15字節")
+    @Operation(summary = "新增-添加&備註資訊")
     @Schema()
-    @PostMapping("/add")
+    @PostMapping("/shop")
 
     public Result shopInsert(@RequestBody Shop shop){
-        Result r = shopService.shopInsert(shop);
-
-        return r;
+        return shopService.insert(shop);
     }
 
-    @Operation(summary = "刪除-依照主鍵ID[s]-店家")
+    @Operation(summary = "刪除-依照主鍵ID[s]-添加&備註資訊")
     @DeleteMapping("/delete/{ids}")
     public Result shopDeleteById(@PathVariable List<Integer> ids){
-        log.info("刪除店家");
-        int i = shopService.shopDelete(ids);
-        if(i>0){
-            log.info("刪除成功，刪除了: {}", i);
-        }else {
-            log.info("刪除失敗");
-        }
-        return Result.success("刪除成功");
+        return shopService.delete(ids);
     }
 
     @Transactional
-    @Operation(summary = "修改-依照主鍵ID-店家", description = "給管理員修改帳號or使用者更換大頭貼使用")
+    @Operation(summary = "修改-依照主鍵ID-添加&備註資訊")
     @PutMapping("/updateByID")
-
-    public Result shopUpdate(@RequestBody Shop shop)
-
-    {
-        log.info("修改店家");
-
-        Result result = shopService.shopUpdate(shop);
-
-        return result;
+    public Result shopUpdate(@RequestBody Shop shop){
+        return shopService.update(shop);
     }
 
-    @Operation(summary = "查詢-所有-店家", description = "無須請求參數")
+    @Operation(summary = "查詢-所有-添加&備註資訊", description = "無須請求參數")
     @GetMapping("/selectAll")
     public Result shopSelectAll(){
-        log.info("查詢所有店家");
-        List<Shop> shop = shopService.shopSelectAll();
-        return Result.success(shop);
+        return shopService.selectAll();
     }
 
-    @Operation(summary = "查詢-依照主鍵ID-店家", parameters = {
-            @Parameter(name = "account", description = "使用者帳號", example = "jay0609@gmail.com")
-    })
-    @GetMapping("/selectByShopName/{shopName}")
-    public Result selectById(@PathVariable String shopName){
-        log.info("依照shopName: {} 查詢店家", shopName);
-        Shop shop = shopService.selectByShopName(shopName);
-        return Result.success(shop);
+    @Operation(summary = "查詢-依照主鍵ID-添加&備註資訊")
+    @GetMapping("/selectById/{shopID}")
+    public Result selectById(@PathVariable Integer shopID){
+        return shopService.selectByID(shopID);
     }
 }

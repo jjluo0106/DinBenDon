@@ -32,5 +32,5 @@ public interface AddMapper {
 
     List<Add> selectByAddName(String account);
 
-    Add selectByID(Integer productID);
+    Add selectByID(Integer addID);
 }

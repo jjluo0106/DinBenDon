@@ -6,12 +6,12 @@
 <mapper namespace="com.heima.mapper.UserOrderMapper">
 
     <!--    新增-->
-    <insert id="insert">
-        insert into db1.t_userOrder(userID,   menuID,   productID,   addIDs,lastUpdateBy, createTime, updateTime)
-        values (
-                             #{userID},#{menuID},#{productID},#{addIDs},#{lastUpdateBy}, NOW(), NOW()
-        )
-    </insert>
+<!--    <insert id="insert">-->
+<!--        insert into db1.t_userOrder(userID,   menuID,   productID,   addIDs,lastUpdateBy, createTime, updateTime)-->
+<!--        values (-->
+<!--                             #{userID},#{menuID},#{productID},#{addIDs},#{lastUpdateBy}, NOW(), NOW()-->
+<!--        )-->
+<!--    </insert>-->
 
 
     <!--    刪除-->

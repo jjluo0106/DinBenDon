@@ -6,15 +6,15 @@
 <mapper namespace="com.heima.mapper.UserMapper">
 
 <!--    新增-->
-    <insert id="userInsert">
-        insert into db1.t_user(userID, account, passWord, phone, userName, image, level, createTime, updateTime)
-        values (
-        null, #{account}, #{passWord}, #{phone}, #{userName}, #{image}, #{level}, NOW(), NOW()
-        )
-    </insert>
+<!--    <insert id="userInsert">-->
+<!--        insert into db1.t_user(userID, account, passWord, phone, userName, image, level, createTime, updateTime)-->
+<!--        values (-->
+<!--        null, #{account}, #{passWord}, #{phone}, #{userName}, #{image}, #{level}, NOW(), NOW()-->
+<!--        )-->
+<!--    </insert>-->
 
     <!--    刪除-->
-    <delete id ="userDelete">
+    <delete id ="delete">
         <if test="ids != null and ids != ''">
             delete from t_user where userID in
             <foreach collection="ids" item="userID" separator="," open="(" close=")">
@@ -23,7 +23,7 @@
         </if>
     </delete>
 
-    <update id="userUpdate">
+    <update id="update">
         update t_user
         <set>
             <if test=" account != null and account != ''">account = #{account} ,</if>
@@ -40,7 +40,7 @@
 
 
     <!--    查詢所有-->
-    <select id="userSelectAll" resultType="com.heima.pojo.User">
+    <select id="selectAll" resultType="com.heima.pojo.User">
         select * from db1.t_user;
     </select>
 

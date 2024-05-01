@@ -6,12 +6,12 @@
 <mapper namespace="com.heima.mapper.TotalOrderMapper">
 
     <!--    新增-->
-    <insert id="insert">
-        insert into db1.t_totalOrder(price, isClear, lastUpdateBy, createTime, updateTime)
-        values (
-                             #{price}, #{isClear}, #{lastUpdateBy}, NOW(), NOW()
-        )
-    </insert>
+<!--    <insert id="insert">-->
+<!--        insert into db1.t_totalOrder(price, isClear, lastUpdateBy, createTime, updateTime)-->
+<!--        values (-->
+<!--                             #{price}, #{isClear}, #{lastUpdateBy}, NOW(), NOW()-->
+<!--        )-->
+<!--    </insert>-->
 
 
     <!--    刪除-->

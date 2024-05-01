@@ -21,6 +21,7 @@ import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
+import java.util.Date;
 
 @SpringBootTest
 public class testBean {
@@ -109,13 +110,23 @@ public class testBean {
     @Autowired
     AddMapper addMapper;
     @Test
-    public void asdf(){
+    public void testMapper(){
         Add add = new Add();
         add.setLastUpdateBy(9);
 
         int addID = addMapper.insert(add);
 
         System.out.println("addID : " + add.getAddID());
+
+
+    }
+
+
+    @Test
+    public void testTime(){
+        Date date = new Date();
+
+        System.out.println("Date : " + date);
 
 
     }
