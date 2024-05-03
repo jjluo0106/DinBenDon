@@ -39,10 +39,11 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("http://localhost:5173") // 允許來源
-                .allowedMethods("GET", "POST", "PUT", "DELETE") // 允許的請求方法
-                .allowedHeaders("*") // 允許的標頭
-                .allowCredentials(true) // 允許携帶認證信息（例如Cookie）
-                .maxAge(3600); // 預檢請求的有效期，以秒為單位
+                .allowedOriginPatterns("*")
+                .allowedMethods("GET", "POST", "PUT", "DELETE")
+                .allowedHeaders("*")
+                .allowCredentials(true)
+                .maxAge(3600)
+                .exposedHeaders("Access-Control-Allow-Origin"); // 添加这行配置
     }
 }
