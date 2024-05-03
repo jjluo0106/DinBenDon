@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Service
-public class AdminService {
+public class AdminShopRelatedService {
 
     @Autowired
     ShopMapper shopMapper;
@@ -20,8 +20,6 @@ public class AdminService {
     ProductMapper productMapper;
     @Autowired
     AddMapper addMapper;
-    @Autowired
-    MenuMapper menuMapper;
 
     /**
      * 新增 Object2to4
@@ -45,7 +43,7 @@ public class AdminService {
         // Adds
         for (int i = 0; i < adds.size(); i++) {
             Add add = adds.get(i);
-            add.setAddID(shopID);
+            add.setShopID(shopID);
             add.setLastUpdateBy(lastUpdateBy);
             addMapper.insert(add);
             int addID = add.getAddID();
@@ -111,24 +109,9 @@ public class AdminService {
         object2to4.setProducts(products);
 
         // Add
-        ArrayList<Integer> list = new ArrayList<>();
-        for (int i = 0; i < products.size(); i++) { // 收集addID
-            String addIDs = products.get(i).getAddIDs();
-            String[] addIDsSplit = addIDs.split(",");
-            for (int j = 0; j < addIDsSplit.length; j++) {
-                list.add(Integer.parseInt(addIDsSplit[j]));
-            }
-        }
-        Collections.sort(list);
-        List<Integer> collect = list.stream().distinct().collect(Collectors.toList());
+        List<Add> adds = addMapper.selectAllByShopID(shopID);
 
-        ArrayList<Add> addList = new ArrayList<>();
-
-        for (int i = 0; i < collect.size(); i++) {
-            Add add = addMapper.selectByID(collect.get(i));
-            addList.add(add);
-        }
-        object2to4.setAdds(addList);
+        object2to4.setAdds(adds);
 
         return Result.success("shop-products-adds 查詢，data: 查詢對象參數", object2to4);
     }

@@ -38,6 +38,11 @@ public class ProductService {
         productMapper.update(product);
         return Result.success("product 依據[id]修改，data: [product修改後對象參數]", productMapper.selectByID(product.getProductID()));
     }
+
+    public Result updateCategory(Integer shopID, String oldCategory, String newCategory) {
+        return Result.success("product 依據[shopID]修改，data: [product修改後對象參數]", productMapper.updateCategory(shopID, oldCategory, newCategory));
+    }
+
     //查
     public Result selectByID(Integer id) {
         return Result.success("product 依據[id]查詢，data: [product查詢對象參數]", productMapper.selectByID(id));
@@ -46,4 +51,6 @@ public class ProductService {
     public Result selectAll() {
         return Result.success("product 所有查詢，data: [product所有查詢對象參數]", productMapper.selectAll());
     }
+
+
 }

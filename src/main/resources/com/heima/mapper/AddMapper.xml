@@ -27,6 +27,7 @@
     <update id="update">
         update t_add
         <set>
+            <if test=" shopID != null and shopID != ''">shopID = #{shopID} ,</if>
             <if test=" description != null and description != ''">description = #{description} ,</if>
             <if test=" price != null and price != ''">price = #{price},</if>
             <if test=" image != null and image != ''">image = #{image},</if>
@@ -51,4 +52,7 @@
         select * from db1.t_add where addID = #{addID};
     </select>
 
+    <select id="selectAllByShopID" resultType="com.heima.pojo.Add">
+        select * from db1.t_add where shopID = #{shopID}
+    </select>
 </mapper>

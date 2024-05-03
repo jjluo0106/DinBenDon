@@ -5,6 +5,7 @@ C:\Develop\DinBenDon\src\main\java\com\heima\controller\MenuController.java
 C:\Develop\DinBenDon\src\main\java\com\heima\service\AddService.java
 C:\Develop\DinBenDon\src\main\java\com\heima\mapper\UserOrderMapper.java
 C:\Develop\DinBenDon\src\main\java\com\heima\service\ShopService.java
+C:\Develop\DinBenDon\src\main\java\com\heima\controller\TotalOrderController.java
 C:\Develop\DinBenDon\src\main\java\com\heima\filter\DemoFilter.java
 C:\Develop\DinBenDon\src\main\java\com\heima\anno\CostumeAnno.java
 C:\Develop\DinBenDon\src\main\java\com\heima\controller\UserController.java
@@ -18,11 +19,11 @@ C:\Develop\DinBenDon\src\main\java\com\heima\config\bak\WebMvcConfiguration.java
 C:\Develop\DinBenDon\src\main\java\com\heima\service\TotalOrderService.java
 C:\Develop\DinBenDon\src\main\java\com\heima\pojo\backup\OperateLog.java
 C:\Develop\DinBenDon\src\main\java\com\heima\util\JwtUtils.java
+C:\Develop\DinBenDon\src\main\java\com\heima\util\MyUtils.java
 C:\Develop\DinBenDon\src\main\java\com\heima\controller\AdminController.java
 C:\Develop\DinBenDon\src\main\java\com\heima\pojo\Menu.java
 C:\Develop\DinBenDon\src\main\java\com\heima\pojo\Add.java
 C:\Develop\DinBenDon\src\main\java\com\heima\filter\ObservationEfficiencyFilter.java
-C:\Develop\DinBenDon\src\main\java\com\heima\controller\TotalOrderContoller.java
 C:\Develop\DinBenDon\src\main\java\com\heima\mapper\UserRecordMapper.java
 C:\Develop\DinBenDon\src\main\java\com\heima\pojo\backup\PageBean.java
 C:\Develop\DinBenDon\src\main\java\com\heima\pojo\Shop.java

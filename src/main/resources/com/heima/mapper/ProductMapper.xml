@@ -41,6 +41,10 @@
         where productID = #{productID};
     </update>
 
+    <update id="updateCategory">
+        update db1.t_product set category = #{newCategory} where category = #{oldCategory} and shopID = #{shopID};
+    </update>
+
     <!--    查詢所有-->
     <select id="selectAll" resultType="com.heima.pojo.Product">
         select * from db1.t_product;

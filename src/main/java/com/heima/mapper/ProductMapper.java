@@ -20,6 +20,8 @@ public interface ProductMapper {
 
     int update(Product product);
 
+    int updateCategory(Integer shopID, String oldCategory, String newCategory);
+
     List<Product> selectAll();
 
     List<Product> selectByProductName(String account);

@@ -30,17 +30,17 @@ public class ProductController {
     @Operation(summary = "新增-產品資訊")
     @Schema()
     @PostMapping("/product")
-
+//新
     public Result productInsert(@RequestBody Product product){
         return productService.insert(product);
     }
-
+//刪
     @Operation(summary = "刪除-依照主鍵ID[s]-產品資訊")
     @DeleteMapping("/delete/{ids}")
     public Result productDeleteById(@PathVariable List<Integer> ids){
         return productService.delete(ids);
     }
-
+//修
     @Transactional
     @Operation(summary = "修改-依照主鍵ID-產品資訊")
     @PutMapping("/updateByID")
@@ -48,12 +48,12 @@ public class ProductController {
         return productService.update(product);
     }
 
-    @Operation(summary = "修改-依照category-產品資訊")
-    @PutMapping("/updateByID")
-    public Result productUpdate(@RequestBody Product product){
-        return productService.update(product);
+    @Operation(summary = "修改-依照ShopID-產品資訊-category", description = "統一將[oldCategory]參數修改成[newCategory]參數")
+    @PutMapping("/updateByCategory")
+    public Result productUpdate(@RequestParam Integer shopID, @RequestParam String oldCategory, @RequestParam String newCategory){
+        return productService.updateCategory(shopID, oldCategory, newCategory);
     }
-
+//查
     @Operation(summary = "查詢-所有-產品資訊", description = "無須請求參數")
     @GetMapping("/selectAll")
     public Result productSelectAll(){

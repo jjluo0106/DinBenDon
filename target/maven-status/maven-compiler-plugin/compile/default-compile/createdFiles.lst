@@ -7,7 +7,6 @@ com\heima\pojo\Result.class
 com\heima\controller\UserOrderController.class
 com\heima\mapper\bak\OperateLogMapper.class
 com\heima\mapper\MenuMapper.class
-com\heima\controller\TotalOrderContoller.class
 com\heima\pojo\backup\Emp.class
 com\heima\pojo\backup\OperateLog.class
 com\heima\service\UserOrderService.class
