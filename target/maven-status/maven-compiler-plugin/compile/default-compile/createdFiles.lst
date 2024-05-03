@@ -30,7 +30,6 @@ com\heima\mapper\bak\EmpMapper.class
 com\heima\mapper\ShopMapper.class
 com\heima\pojo\UserOrder.class
 com\heima\mapper\ProductMapper.class
-com\heima\service\AdminService.class
 com\heima\service\TotalOrderService.class
 com\heima\pojo\backup\PageBean.class
 com\heima\aop\CutCut.class
@@ -47,5 +46,4 @@ com\heima\controller\MenuController.class
 com\heima\pojo\Product.class
 com\heima\mapper\UserRecordMapper.class
 com\heima\service\ShopService.class
-com\heima\controller\AdminController.class
 com\heima\anno\CostumeAnno.class

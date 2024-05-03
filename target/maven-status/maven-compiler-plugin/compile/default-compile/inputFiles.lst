@@ -20,8 +20,8 @@ C:\Develop\DinBenDon\src\main\java\com\heima\service\TotalOrderService.java
 C:\Develop\DinBenDon\src\main\java\com\heima\pojo\backup\OperateLog.java
 C:\Develop\DinBenDon\src\main\java\com\heima\util\JwtUtils.java
 C:\Develop\DinBenDon\src\main\java\com\heima\util\MyUtils.java
-C:\Develop\DinBenDon\src\main\java\com\heima\controller\AdminController.java
 C:\Develop\DinBenDon\src\main\java\com\heima\pojo\Menu.java
+C:\Develop\DinBenDon\src\main\java\com\heima\controller\AdminShopRelatedController.java
 C:\Develop\DinBenDon\src\main\java\com\heima\pojo\Add.java
 C:\Develop\DinBenDon\src\main\java\com\heima\filter\ObservationEfficiencyFilter.java
 C:\Develop\DinBenDon\src\main\java\com\heima\mapper\UserRecordMapper.java
@@ -34,6 +34,8 @@ C:\Develop\DinBenDon\src\main\java\com\heima\interceptor\LoginInterceptor.java
 C:\Develop\DinBenDon\src\main\java\com\heima\mapper\ProductMapper.java
 C:\Develop\DinBenDon\src\main\java\com\heima\controller\UserOrderController.java
 C:\Develop\DinBenDon\src\main\java\com\heima\mapper\AddMapper.java
+C:\Develop\DinBenDon\src\main\java\com\heima\testBreath\MyScheduledTask.java
+C:\Develop\DinBenDon\src\main\java\com\heima\service\AdminShopRelatedService.java
 C:\Develop\DinBenDon\src\main\java\com\heima\mapper\bak\DeptMapper.java
 C:\Develop\DinBenDon\src\main\java\com\heima\controller\UserRecordContoller.java
 C:\Develop\DinBenDon\src\main\java\com\heima\service\MenuService.java
@@ -49,7 +51,6 @@ C:\Develop\DinBenDon\src\main\java\com\heima\pojo\backup\CallbackBean.java
 C:\Develop\DinBenDon\src\main\java\com\heima\mapper\bak\LogMapper.java
 C:\Develop\DinBenDon\src\main\java\com\heima\pojo\UserOrder.java
 C:\Develop\DinBenDon\src\main\java\com\heima\aop\CutCut.java
-C:\Develop\DinBenDon\src\main\java\com\heima\service\AdminService.java
 C:\Develop\DinBenDon\src\main\java\com\heima\service\UserRecordService.java
 C:\Develop\DinBenDon\src\main\java\com\heima\service\ProductService.java
 C:\Develop\DinBenDon\src\main\java\com\heima\pojo\Result.java
