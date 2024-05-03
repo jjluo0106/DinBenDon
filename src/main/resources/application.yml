@@ -2,12 +2,24 @@ spring:
   #database info
   # 34.80.254.154
   datasource:
-    # 3306 - 3307
-    url: jdbc:mariadb://localhost:3306/db1
-    # azhe2401 - root
+
+
+#    # 3306 - 3307
+#    url: jdbc:mariadb://localhost:3307/db1
+#    # azhe2401 - root
+#    username: root
+#    password: 1234
+#    driver-class-name: org.mariadb.jdbc.Driver
+
+
+
+    url: sfo1.clusters.zeabur.com
     username: root
-    password: 1234
-    driver-class-name: org.mariadb.jdbc.Driver
+    password: h6VogG2CZrJY9710FR345kwNIsA8qQzv
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+
     #file upload info
   servlet:
     multipart:
