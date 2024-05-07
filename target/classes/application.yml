@@ -13,9 +13,9 @@ spring:
 
 
 
-    url: jdbc:mysql://hkg1.clusters.zeabur.com:30799
+    url: jdbc:mysql://sfo1.clusters.zeabur.com:31518
     username: root
-    password: Akmo7130C5GijbLpBOE64PYvFUQd29V8
+    password: 2S709M3vRUwjAOzYxed4mai1TQ68FN5B
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 
