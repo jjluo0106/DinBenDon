@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.heima.mapper.AdminMadeOrderMapper">
+
+<!--    新增-->
+<!--    <insert id="insert">-->
+<!--        insert into db1.t_adminMadeOrder(adminMadeOrderID, adminMadeOrderName, phone, address, image, lastUpdateBy, createTime, updateTime)-->
+<!--        values (-->
+<!--        null, #{adminMadeOrderName}, #{phone}, #{address}, #{image}, #{lastUpdateBy}, NOW(), NOW()-->
+<!--        )-->
+<!--    </insert>-->
+
+    <!--    刪除-->
+    <delete id ="delete">
+        <if test="ids != null and ids != ''">
+            delete from t_adminmadeorder where adminMadeOrderID in
+            <foreach collection="ids" item="adminMadeOrderID" separator="," open="(" close=")">
+                #{adminMadeOrderID}
+            </foreach>
+        </if>
+    </delete>
+
+    <update id="update">
+        update t_adminmadeorder1
+        <set>
+            <if test=" shopID != null and shopID != ''">shopID = #{shopID} ,</if>
+            <if test=" orderName != null and orderName != ''">orderName = #{orderName},</if>
+            <if test=" coda != null and coda != ''">coda = #{coda},</if>
+            <if test=" startTime != null and startTime != ''">startTime = #{startTime},</if>
+            <if test=" endTime != null and endTime != ''">endTime = #{endTime},</if>
+            <if test=" isGetAllMoney != null and isGetAllMoney != ''">isGetAllMoney = #{isGetAllMoney},</if>
+            <if test=" isPaid != null and isPaid != ''">isPaid = #{isPaid},</if>
+            <if test=" totalPrice != null and totalPrice != ''">totalPrice = #{totalPrice},</if>
+            <if test=" remark != null and remark != ''">remark = #{remark},</if>
+            <if test=" lastUpdateBy != null and lastUpdateBy != ''">lastUpdateBy = #{lastUpdateBy},</if>
+            <if test=" createTime != null and createTime != ''">createTime = #{createTime},</if>
+
+            updateTime = NOW()
+        </set>
+        where adminMadeOrderID = #{adminMadeOrderID};
+    </update>
+
+    <!--    查詢所有-->
+    <select id="selectAll" resultType="com.heima.pojo.AdminMadeOrder">
+        select * from db1.t_adminmadeorder1;
+    </select>
+
+
+    <select id="selectByAdminMadeOrderName" resultType="com.heima.pojo.AdminMadeOrder">
+        select * from db1.t_adminmadeorder1 where adminMadeOrderName = #{adminMadeOrderName};
+    </select>
+
+    <select id="selectByID" resultType="com.heima.pojo.AdminMadeOrder">
+        select * from db1.t_adminmadeorder1 where adminMadeOrderID = #{adminMadeOrderID};
+    </select>
+
+
+    <select id="selectByIDs" resultType="com.heima.pojo.AdminMadeOrder">
+        <if test="ids != null and ids != ''">
+            select * from db1.t_adminMadeOrder where adminMadeOrderID in
+            <foreach collection="ids" item="adminMadeOrderID" separator="," open="(" close=")">
+                #{adminMadeOrderID}
+            </foreach>
+        </if>
+    </select>
+
+</mapper>

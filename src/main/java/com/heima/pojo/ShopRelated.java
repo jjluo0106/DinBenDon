@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class Object2to4 {
+public class ShopRelated {
 
     @Schema(description = "2.Shop店家資訊", required = true)
     Shop shop;
