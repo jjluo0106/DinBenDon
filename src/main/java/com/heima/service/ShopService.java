@@ -3,6 +3,7 @@ package com.heima.service;
 import com.heima.mapper.ShopMapper;
 import com.heima.pojo.Shop;
 import com.heima.pojo.Result;
+import com.heima.pojo.User;
 import com.heima.util.MyUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +27,13 @@ public class ShopService {
     }
     // 刪
     public Result delete(List<Integer> ids) {
-        int i = shopMapper.delete(ids);
-        if(i>0){
-            return Result.success("shop 刪除，data: [刪除數量]", i);
+        List<Shop> shops = shopMapper.selectByIDs(ids); // 刪除前先查詢
+        int num = shopMapper.delete(ids);
+
+        if (num>0){
+            return Result.success("shop 刪除- " + num + "筆，date: [shop刪除前對象參數]", shops);
         }else {
-            return Result.success("無匹配id",i);
+            return Result.fail("shop 刪除- " + num + "筆", "");
         }
     }
     // 修

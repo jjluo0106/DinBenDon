@@ -5,7 +5,7 @@
 
 <mapper namespace="com.heima.mapper.AddMapper">
 
-    <!--    新增-->
+<!--        新增-->
 <!--    <insert id="insert">-->
 <!--        insert into db1.t_add(description, price, image, lastUpdateBy, createTime, updateTime)-->
 <!--        values (-->
@@ -54,5 +54,14 @@
 
     <select id="selectAllByShopID" resultType="com.heima.pojo.Add">
         select * from db1.t_add where shopID = #{shopID}
+    </select>
+
+    <select id="selectByIDs" resultType="com.heima.pojo.Add">
+        <if test="ids != null and ids != ''">
+            select * from db1.t_add where addID in
+            <foreach collection="ids" item="addID" separator="," open="(" close=")">
+                #{addID}
+            </foreach>
+        </if>
     </select>
 </mapper>

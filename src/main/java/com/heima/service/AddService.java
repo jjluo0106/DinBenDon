@@ -26,11 +26,13 @@ public class AddService {
     }
     // 刪
     public Result delete(List<Integer> ids) {
-        int i = addMapper.delete(ids);
-        if(i>0){
-            return Result.success("add 刪除，data: [刪除數量]", i);
+        List<Add> adds = addMapper.selectByIDs(ids); // 刪除前先查詢
+        int num = addMapper.delete(ids);
+
+        if (num>0){
+            return Result.success("add 刪除- " + num + "筆，date: [add刪除前對象參數]", adds);
         }else {
-            return Result.success("無匹配id",i);
+            return Result.fail("add 刪除- " + num + "筆", "");
         }
     }
     // 修

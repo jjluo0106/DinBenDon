@@ -51,4 +51,14 @@
         select * from db1.t_shop where shopID = #{shopID};
     </select>
 
+
+    <select id="selectByIDs" resultType="com.heima.pojo.Shop">
+        <if test="ids != null and ids != ''">
+            select * from db1.t_shop where shopID in
+            <foreach collection="ids" item="shopID" separator="," open="(" close=")">
+                #{shopID}
+            </foreach>
+        </if>
+    </select>
+
 </mapper>

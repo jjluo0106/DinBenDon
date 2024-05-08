@@ -1,6 +1,7 @@
 package com.heima.mapper;
 
 import com.heima.pojo.Add;
+import com.heima.pojo.Shop;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
@@ -32,6 +33,8 @@ public interface AddMapper {
     List<Add> selectByAddName(String account);
 
     Add selectByID(Integer addID);
+
+    List<Add> selectByIDs(List<Integer> ids);
 
     List<Add> selectAllByShopID(Integer shopID);
 }

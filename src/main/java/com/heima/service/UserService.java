@@ -33,36 +33,40 @@ public class UserService {
 
         log.info("account :" + account);
         log.info("passWord :" + passWord);
-        if(!account.matches(regexForEmail)){
-            return Result.fail("帳號不合法: 非e-mail格式","");
+        if (!account.matches(regexForEmail)) {
+            return Result.fail("帳號不合法: 非e-mail格式", "");
         }
-        if(!passWord.matches(regexForPassword)){
-            return Result.fail("密碼長度需為8~15個字符","");
+        if (!passWord.matches(regexForPassword)) {
+            return Result.fail("密碼長度需為8~15個字符", "");
         }
 
         User userCheck = userMapper.selectByAccount(account);
-        log.info("較驗是否有重複帳號: {}",userCheck);
+        log.info("較驗是否有重複帳號: {}", userCheck);
 
-        if(userCheck != null){
-            return Result.fail("重複的帳號名稱","");
+        if (userCheck != null) {
+            return Result.fail("重複的帳號名稱", "");
         }
         userMapper.insert(user);
 
         user.setCreateTime(MyUtils.getNow());
         user.setUpdateTime(MyUtils.getNow());
 
-        return Result.success("user 新增，data: [user創建後對象參數]",user);
+        return Result.success("user 新增，data: [user創建後對象參數]", user);
     }
 
     // 刪
     public Result delete(List<Integer> ids) {
-        int i = userMapper.delete(ids);
-        if(i>0){
-            return Result.success("user 刪除，data: [刪除數量]", i);
+
+        List<User> users = userMapper.selectByIDs(ids); // 刪除前先查詢
+        int num = userMapper.delete(ids);
+
+        if (num>0){
+            return Result.success("user 刪除- " + num + "筆，date: [user刪除前對象參數]", users);
         }else {
-            return Result.success("無匹配id",i);
+            return Result.fail("user 刪除- " + num + "筆", "");
         }
     }
+
     // 修
     public Result userUpdate(User user) {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
@@ -75,7 +79,7 @@ public class UserService {
         if (user.getAccount() != null && !user.getAccount().matches(emailRegex)) {
             return Result.errorWrongFormat("account格式不符");
         }
-        if (user.getPassWord() != null && !isPassWordLegal(user.getPassWord() ) ) {
+        if (user.getPassWord() != null && !isPassWordLegal(user.getPassWord())) {
             return Result.error("密碼格式錯誤");
         }
 

@@ -53,4 +53,13 @@
         select * from db1.t_user where userID = #{userID};
     </select>
 
+    <select id="selectByIDs" resultType="com.heima.pojo.User">
+        <if test="ids != null and ids != ''">
+            select * from db1.t_user where userID in
+            <foreach collection="ids" item="userID" separator="," open="(" close=")">
+                #{userID}
+            </foreach>
+        </if>
+    </select>
+
 </mapper>

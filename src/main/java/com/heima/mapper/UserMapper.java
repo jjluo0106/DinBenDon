@@ -25,4 +25,6 @@ public interface UserMapper {
     User selectByAccount(String account);
 
     User selectByID(Integer userID);
+
+    List<User> selectByIDs(List<Integer> ids);
 }

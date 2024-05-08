@@ -7,9 +7,9 @@
 
     <!--    新增-->
 <!--    <insert id="insert">-->
-<!--        insert into db1.t_product(shopID, addIDs, productName, price, productType, image, lastUpdateBy, createTime, updateTime)-->
+<!--        insert into db1.t_product(productID, addIDs, productName, price, productType, image, lastUpdateBy, createTime, updateTime)-->
 <!--        values (-->
-<!--        #{shopID}, #{addIDs}, #{productName}, #{price}, #{productType}, #{image}, #{lastUpdateBy}, NOW(), NOW()-->
+<!--        #{productID}, #{addIDs}, #{productName}, #{price}, #{productType}, #{image}, #{lastUpdateBy}, NOW(), NOW()-->
 <!--        )-->
 <!--    </insert>-->
 
@@ -27,7 +27,7 @@
     <update id="update">
         update t_product
         <set>
-            <if test=" shopID != null and shopID != ''">shopID = #{shopID} ,</if>
+            <if test=" productID != null and productID != ''">productID = #{productID} ,</if>
             <if test=" addIDs != null and addIDs != ''">addIDs = #{addIDs},</if>
             <if test=" productName != null and productName != ''">productName = #{productName},</if>
             <if test=" price != null and price != ''">price = #{price},</if>
@@ -42,7 +42,7 @@
     </update>
 
     <update id="updateCategory">
-        update db1.t_product set category = #{newCategory} where category = #{oldCategory} and shopID = #{shopID};
+        update db1.t_product set category = #{newCategory} where category = #{oldCategory} and productID = #{productID};
     </update>
 
     <!--    查詢所有-->
@@ -59,8 +59,17 @@
         select * from db1.t_product where productID = #{productID};
     </select>
 
+    <select id="selectByIDs" resultType="com.heima.pojo.Shop">
+        <if test="ids != null and ids != ''">
+            select * from db1.t_product where productID in
+            <foreach collection="ids" item="productID" separator="," open="(" close=")">
+                #{productID}
+            </foreach>
+        </if>
+    </select>
+
     <select id="selectByShopID" resultType="com.heima.pojo.Product">
-        select * from db1.t_product where shopID = #{shopID};
+        select * from db1.t_product where productID = #{productID};
     </select>
 
 </mapper>
