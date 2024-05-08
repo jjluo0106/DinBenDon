@@ -17,7 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/user")  //抽取路徑前墜
 @Tag(name = "1.User使用者")
-public class UserController {
+public class aUserController {
 
     @Autowired
     UserService userService;

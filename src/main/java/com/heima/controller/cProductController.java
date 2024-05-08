@@ -17,7 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/product")  //抽取路徑前墜
 @Tag(name = "3.Product產品資訊")
-public class ProductController {
+public class cProductController {
 
     @Autowired
     ProductService productService;

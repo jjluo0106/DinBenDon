@@ -17,7 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/add")  //抽取路徑前墜
 @Tag(name = "4.Add添加&備註")
-public class AddController {
+public class dAddController {
 
     @Autowired
     AddService addService;

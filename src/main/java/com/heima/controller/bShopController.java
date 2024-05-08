@@ -17,7 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/shop")  //抽取路徑前墜
 @Tag(name = "2.Shop店家資訊")
-public class ShopController {
+public class bShopController {
 
     @Autowired
     ShopService shopService;

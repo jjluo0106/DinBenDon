@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @RequestMapping("/admin")  //抽取路徑前墜
-@Tag(name = "9.Admin-店家相關")
-public class AdminShopRelatedController {
+@Tag(name = "8.Admin-店家相關")
+public class xAdminShopRelatedController {
 
     @Autowired
     AdminShopRelatedService adminShopRelatedService;
