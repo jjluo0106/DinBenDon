@@ -5,18 +5,18 @@ spring:
 
 
 #    # 3306 - 3307
-    url: jdbc:mariadb://localhost:3307/db1
-    # azhe2401 - root
-    username: root
-    password: 1234
-    driver-class-name: org.mariadb.jdbc.Driver
-
-
-
-#    url: jdbc:mysql://sfo1.clusters.zeabur.com:31518
+#    url: jdbc:mariadb://localhost:3307/db1
+#    # azhe2401 - root
 #    username: root
-#    password: 2S709M3vRUwjAOzYxed4mai1TQ68FN5B
-#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    password: 1234
+#    driver-class-name: org.mariadb.jdbc.Driver
+
+
+
+    url: jdbc:mysql://sfo1.clusters.zeabur.com:31518
+    username: root
+    password: 2S709M3vRUwjAOzYxed4mai1TQ68FN5B
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
 
 
