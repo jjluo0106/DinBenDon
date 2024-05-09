@@ -16,7 +16,7 @@
     <!--    刪除-->
     <delete id ="delete">
         <if test="ids != null and ids != ''">
-            delete from t_adminmadeorder where adminMadeOrderID in
+            delete from db1.t_adminmadeorder1 where adminMadeOrderID in
             <foreach collection="ids" item="adminMadeOrderID" separator="," open="(" close=")">
                 #{adminMadeOrderID}
             </foreach>
@@ -24,7 +24,7 @@
     </delete>
 
     <update id="update">
-        update t_adminmadeorder1
+        update db1.t_adminmadeorder1
         <set>
             <if test=" shopID != null and shopID != ''">shopID = #{shopID} ,</if>
             <if test=" orderName != null and orderName != ''">orderName = #{orderName},</if>
@@ -60,7 +60,7 @@
 
     <select id="selectByIDs" resultType="com.heima.pojo.AdminMadeOrder">
         <if test="ids != null and ids != ''">
-            select * from db1.t_adminMadeOrder where adminMadeOrderID in
+            select * from db1.t_adminmadeorder1 where adminMadeOrderID in
             <foreach collection="ids" item="adminMadeOrderID" separator="," open="(" close=")">
                 #{adminMadeOrderID}
             </foreach>

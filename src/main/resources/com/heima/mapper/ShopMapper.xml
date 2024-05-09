@@ -16,7 +16,7 @@
     <!--    刪除-->
     <delete id ="delete">
         <if test="ids != null and ids != ''">
-            delete from t_shop where shopID in
+            delete from db1.t_shop where shopID in
             <foreach collection="ids" item="shopID" separator="," open="(" close=")">
                 #{shopID}
             </foreach>
@@ -24,7 +24,7 @@
     </delete>
 
     <update id="update">
-        update t_shop
+        update db1.t_shop
         <set>
             <if test=" shopName != null and shopName != ''">shopName = #{shopName} ,</if>
             <if test=" phone != null and phone != ''">phone = #{phone},</if>

@@ -8,23 +8,23 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserOrderList {
+public class ConsumerOrderDetail {
 
 
     @Schema(description = "＜唯一ID＞: 新增-皆不填，系統將自動產生/ 修改-必填", example = "1")
-    Integer userOrderListID;
+    Integer consumerOrderDetailID;
 
-    @Schema(description = "關聯-使用者ID", example = "1", required = true)
-    Integer userID;
+    @Schema(description = "關聯-用戶下定訂單ID", example = "1", required = true)
+    Integer consumerOrderListID;
 
-    @Schema(description = "關聯-管理員發起訂單ID", example = "1", required = true)
-    Integer adminMadeOrderID;
+    @Schema(description = "關聯-產品資訊ID", example = "1", required = true)
+    Integer productID;
 
-    @Schema(description = "訂單總金額 : 整合UserOrderDetail的總金額", example = "300", required = true)
-    String price;
+    @Schema(description = "關聯-添加&備註ID", example = "1", required = true)
+    String addIDs;
 
-    @Schema(description = "使用者是否已付款", example = "2024-05-08 18:18:00", required = true)
-    Integer isPaid;
+    @Schema(description = "數量", example = "2", required = true)
+    Integer amount;
 
     @Schema(description = "備註", example = "我的珍奶不要加珍珠")
     String remark;

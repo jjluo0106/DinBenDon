@@ -23,7 +23,7 @@ public class Result {
      */
     @ApiResponse(description = "成功")
     public static Result success(Object data) {
-        log.info("成功響應:\ndata: {}",data.toString());
+        log.info("\n成功響應:\ndata: {}", data.toString());
         return new Result("success", 200, "Request successful", data);
     }
 
@@ -32,20 +32,20 @@ public class Result {
      * 重載success: 可以書寫msg
      */
     public static Result success(String msg, Object data) {
-        log.info("成功響應:\nmsg:\n{}",msg);
+        log.info("成功響應:\nmsg:\n{}\ndata:\n{}", msg, data);
         return new Result("success", 200, msg, data);
     }
 
     /**
      * 與目前狀態衝突
      */
-    public static Result fail(String msg,Object data) {
-        log.info("失敗響應:\nmsg:\n{}",msg);
+    public static Result fail(String msg, Object data) {
+        log.info("失敗響應:\nmsg:\n{}", msg);
         return new Result("fail", 409, msg, data);
     }
 
     public static Result error(String msg) {
-        log.info("錯誤響應:\nmsg:\n{}",msg);
+        log.info("錯誤響應:\nmsg:\n{}", msg);
         return new Result("error", 404, msg, "");
     }
 
