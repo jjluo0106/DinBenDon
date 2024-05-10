@@ -1,6 +1,7 @@
 package com.heima.mapper;
 
 import com.heima.pojo.AdminMadeOrder;
+import com.heima.pojo.ConsumerOrderList;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
@@ -28,4 +29,6 @@ public interface AdminMadeOrderMapper {
     AdminMadeOrder selectByID(Integer adminMadeOrderID);
 
     List<AdminMadeOrder> selectByIDs(List<Integer> ids);
+
+    List<AdminMadeOrder> selectByAdminMadeOrderID(Integer adminMadeOrderID);
 }

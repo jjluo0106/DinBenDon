@@ -27,5 +27,5 @@ public interface ConsumerOrderDetailMapper {
 
     ConsumerOrderDetail selectByID(Integer consumerOrderDetailID);
 
-    List<ConsumerOrderDetail> selectByIDs(List<Integer> ids);
+    List<ConsumerOrderDetail> selectByOrderListID(Integer orderListID);
 }

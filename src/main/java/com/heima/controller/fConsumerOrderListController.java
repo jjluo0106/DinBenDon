@@ -16,7 +16,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/consumerOrderList")  //抽取路徑前墜
-@Tag(name = "6.ConsumerOrderList用戶訂單")
+@Tag(name = "6.ConsumerOrderList消費者訂單")
 public class fConsumerOrderListController {
 
     @Autowired
@@ -27,7 +27,7 @@ public class fConsumerOrderListController {
      * @param consumerOrderList
      * @return
      */
-    @Operation(summary = "新增-用戶訂單")
+    @Operation(summary = "新增-消費者訂單")
     @Schema()
     @PostMapping("/consumerOrderList")
 

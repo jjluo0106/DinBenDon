@@ -20,8 +20,8 @@ public class ConsumerOrderList {
     @Schema(description = "關聯-管理員發起訂單ID", example = "1", required = true)
     Integer adminMadeOrderID;
 
-    @Schema(description = "訂單總金額 : 整合UserOrderDetail的總金額", example = "300", required = true)
-    String price;
+    @Schema(description = "訂單總金額 : 整合UserOrderDetail的總金額", example = "", required = false)
+    Integer price;
 
     @Schema(description = "使用者是否已付款", example = "2024-05-08 18:18:00", required = true)
     Integer isPaid;

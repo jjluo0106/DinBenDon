@@ -28,4 +28,6 @@ public interface ConsumerOrderListMapper {
     ConsumerOrderList selectByID(Integer consumerOrderListID);
 
     List<ConsumerOrderList> selectByIDs(List<Integer> ids);
+
+    List<ConsumerOrderList> selectByAdminMadeOrderID(Integer adminMadeOrderID);
 }

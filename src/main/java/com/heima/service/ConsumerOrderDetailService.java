@@ -25,16 +25,7 @@ public class ConsumerOrderDetailService {
         return Result.success("consumerOrderDetail 新增，data: [consumerOrderDetail創建後對象參數]", consumerOrderDetail);
     }
     // 刪
-    public Result delete(List<Integer> ids) {
-        List<ConsumerOrderDetail> consumerOrderDetails = consumerOrderDetailMapper.selectByIDs(ids); // 刪除前先查詢
-        int num = consumerOrderDetailMapper.delete(ids);
 
-        if (num>0){
-            return Result.success("consumerOrderDetail 刪除- " + num + "筆，date: [consumerOrderDetail刪除前對象參數]", consumerOrderDetails);
-        }else {
-            return Result.fail("consumerOrderDetail 刪除- " + num + "筆", "");
-        }
-    }
     // 修
     public Result update(ConsumerOrderDetail consumerOrderDetail) {
         consumerOrderDetailMapper.update(consumerOrderDetail);

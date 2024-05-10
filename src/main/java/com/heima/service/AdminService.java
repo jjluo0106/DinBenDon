@@ -22,6 +22,8 @@ public class AdminService {
     AddMapper addMapper;
     @Autowired
     AdminMadeOrderMapper adminMadeOrderMapper;
+    @Autowired
+    ConsumerOrderListMapper consumerOrderListMapper;
 
     //------------------------新----------------------------
     /**
@@ -131,7 +133,39 @@ public class AdminService {
     }
 
 
-    public Result selectAdminMadeOrderById() {
+    public Result selectAllAdminMadeOrder() {
         return Result.success("adminMadeOrder 查詢，data: 查詢對象參數", adminMadeOrderMapper.selectAll());
+    }
+
+
+    /**
+     * 管理員透過查詢此單刷新:
+     * 是否收齊款項
+     * 總金額
+     * 修改時間
+     */
+    public Result selectAdminMadeOrderByID(Integer adminMadeOrderID) {
+        List<ConsumerOrderList> consumerOrderLists = consumerOrderListMapper.selectByAdminMadeOrderID(adminMadeOrderID);
+
+        log.info("獲取的consumerOrderLists--------------{}",consumerOrderLists);
+        AdminMadeOrder adminMadeOrder = new AdminMadeOrder(); // 透過此對象更新數據
+
+        int adminMadeOrderPrice = 0;
+        int isGetAllMoney = 1;
+
+        for (ConsumerOrderList consumerOrderList : consumerOrderLists) {
+            adminMadeOrderPrice += consumerOrderList.getPrice();
+            if(consumerOrderList.getIsPaid() == 0) isGetAllMoney = 0;
+//            log.info("或取道的consumerOrderList------{}", consumerOrderList);
+        }
+        adminMadeOrder.setAdminMadeOrderID(adminMadeOrderID);
+        adminMadeOrder.setIsGetAllMoney(isGetAllMoney);
+        adminMadeOrder.setTotalPrice(adminMadeOrderPrice);
+        adminMadeOrder.setUpdateTime(MyUtils.getNow());
+        log.info("用於更新的對象---------------------\n{}",adminMadeOrder);
+//        log.info("adminMadeOrderID----------------{}",adminMadeOrderID);
+        adminMadeOrderMapper.update(adminMadeOrder);
+
+        return Result.success("adminMadeOrder 查詢，data: 查詢對象參數", adminMadeOrderMapper.selectByID(adminMadeOrderID));
     }
 }

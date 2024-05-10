@@ -62,4 +62,8 @@
         </if>
     </select>
 
+    <select id="selectByOrderListID" resultType="com.heima.pojo.ConsumerOrderDetail">
+        select * from db1.t_consumerorderdetail where consumerOrderListID in (#{consumerOrderListID});
+    </select>
+
 </mapper>

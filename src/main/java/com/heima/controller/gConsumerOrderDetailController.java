@@ -16,7 +16,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/consumerOrderDetail")  //抽取路徑前墜
-@Tag(name = "7.ConsumerOrderDetail用戶產品個體明細")
+@Tag(name = "7.ConsumerOrderDetail消費者產品個體明細")
 public class gConsumerOrderDetailController {
 
     @Autowired
@@ -27,7 +27,7 @@ public class gConsumerOrderDetailController {
      * @param consumerOrderDetail
      * @return
      */
-    @Operation(summary = "新增-用戶產品個體明細")
+    @Operation(summary = "新增-消費者產品個體明細")
     @Schema()
     @PostMapping("/consumerOrderDetail")
 
@@ -35,26 +35,26 @@ public class gConsumerOrderDetailController {
         return consumerOrderDetailService.insert(consumerOrderDetail);
     }
 
-    @Operation(summary = "刪除-依照主鍵ID[s]-用戶產品個體明細")
-    @DeleteMapping("/delete/{ids}")
-    public Result consumerOrderDetailDeleteById(@PathVariable List<Integer> ids){
-        return consumerOrderDetailService.delete(ids);
-    }
+//    @Operation(summary = "刪除-依照主鍵ID[s]-消費者產品個體明細")
+//    @DeleteMapping("/delete/{ids}")
+//    public Result consumerOrderDetailDeleteById(@PathVariable List<Integer> ids){
+//        return consumerOrderDetailService.delete(ids);
+//    }
 
     @Transactional
-    @Operation(summary = "修改-依照主鍵ID-用戶產品個體明細")
+    @Operation(summary = "修改-依照主鍵ID-消費者產品個體明細")
     @PutMapping("/updateByID")
     public Result consumerOrderDetailUpdate(@RequestBody ConsumerOrderDetail consumerOrderDetail){
         return consumerOrderDetailService.update(consumerOrderDetail);
     }
 
-    @Operation(summary = "查詢-所有-用戶產品個體明細", description = "無須請求參數")
+    @Operation(summary = "查詢-所有-消費者產品個體明細", description = "無須請求參數")
     @GetMapping("/selectAll")
     public Result consumerOrderDetailSelectAll(){
         return consumerOrderDetailService.selectAll();
     }
 
-    @Operation(summary = "查詢-依照主鍵ID-用戶產品個體明細")
+    @Operation(summary = "查詢-依照主鍵ID-消費者產品個體明細")
     @GetMapping("/selectById/{consumerOrderDetailID}")
     public Result selectById(@PathVariable Integer consumerOrderDetailID){
         return consumerOrderDetailService.selectByID(consumerOrderDetailID);

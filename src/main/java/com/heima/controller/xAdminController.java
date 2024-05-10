@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @RequestMapping("/admin")  //抽取路徑前墜
-@Tag(name = "8.Admin-店家相關")
+@Tag(name = "8.Admin-管理員相關")
 public class xAdminController {
 
     @Autowired
@@ -50,23 +50,33 @@ public class xAdminController {
 
 
     /**
-     * 查詢Shop的Add
+     * 查詢ShopRelated-依照shopID
      */
     @Operation(summary = "查詢-店家對象2.3.4-依照shopID")
     @GetMapping("/selectAddByShopID/{ShopID}")
     public Result selectShopRelatedById(@PathVariable Integer ShopID){
-        log.info("ShopID: {} 查詢添加&備註", ShopID);
         return adminService.select234ByShopID(ShopID);
     }
 
     /**
-     * 查詢Shop的Add
+     * 查詢[所有]-管理員發起訂單
      */
-    @Operation(summary = "查詢-管理員發起訂單")
-    @GetMapping("/selectAllAdminMadeOrderByID")
-    public Result selectAdminMadeOrderById(){
-        log.info("AdminMadeOrderID: {} 查詢 管理員發起訂單");
-        return adminService.selectAdminMadeOrderById();
+    @Operation(summary = "查詢[所有]-管理員發起訂單")
+    @GetMapping("/selectAllAdminMadeOrder")
+    public Result selectAdminMadeOrder(){
+        return adminService.selectAllAdminMadeOrder();
+    }
+
+
+    /**
+     * 查詢[所有]-管理員發起訂單
+     */
+    @Operation(summary = "查詢[單一]-管理員發起訂單-AdminMadeOrderID")
+    @GetMapping("/selectAllAdminMadeOrderByID/{adminMadeOrderID}")
+    @Transactional
+    public Result selectAdminMadeOrderById(@PathVariable Integer adminMadeOrderID){
+        log.info("查詢 管理員發起訂單----------{}", adminMadeOrderID);
+        return adminService.selectAdminMadeOrderByID(adminMadeOrderID);
     }
 
 
